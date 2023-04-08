@@ -9,7 +9,7 @@ const app=express();
 app.use(cors())
 app.use(express.json());
 
-app.get("/",userRouter)
+app.use("/",userRouter)
 
 app.listen(process.env.port,async()=>{
     try{
