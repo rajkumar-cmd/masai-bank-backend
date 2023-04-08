@@ -22,7 +22,7 @@ userRouter.post("/openAccount", async (req, res) => {
 })
 userRouter.patch("/updateKYC",async(req,res)=>{
     const payload=req.body;
-    req.send({"msg":payload});
+    res.send({"msg":payload});
 })
 
 module.exports = {
