@@ -8,7 +8,7 @@ userRouter.get("/",(req,res)=>{
 })
 userRouter.post("/openAccount", async (req, res) => {
     const { Name, Gender, DOB, Email, Mobile, InitialBalance, AdharNo, PanNo } = req.body;
-    try {
+    // try {
         const users = await userModel.find({ Name });
         if (users.length > 0) {
             const token=jwt.sign({userID:users[0]._id},"masaiBank")
@@ -19,9 +19,9 @@ userRouter.post("/openAccount", async (req, res) => {
             const token=jwt.sign({userID:users.name},"masaiBank")
             res.send({ "msg": "Registered Successfully","token":token })
         }
-    } catch (err) {
-        res.send({ "msg": "Registeration Failed" })
-    }
+    // } catch (err) {
+        // res.send({ "msg": "Registeration Failed" })
+    // }
 })
 
 module.exports={
