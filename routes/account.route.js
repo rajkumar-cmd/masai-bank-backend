@@ -23,9 +23,11 @@ userRouter.post("/openAccount", async (req, res) => {
 userRouter.patch("/updateKYC/:id",async(req,res)=>{
     const payload=req.body;
     const id=req.params.id;
+    console.timeLog(payload,id);
     const user=await userModel.find({"_id":id})
     try{
         await userModel.findByIdAndUpdate({"_id":id},payload)
+        console.log(userModel);
         res.send({"msg":"Update Successfull"});
     }catch(err){
         res.send({"msg":err})
