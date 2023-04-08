@@ -11,12 +11,12 @@ userRouter.post("/openAccount", async (req, res) => {
     // try {
         const users = await userModel.find({ Name });
         if (users.length > 0) {
-            const token=jwt.sign({userID:users[0]._id},"masaiBank")
+            const token=jwt.sign({userName:users[0].name},"masaiBank")
             res.send({ "msg": "Already Registered","token":token })
         } else {
             const user = new userModel({ Name, Gender, DOB, Email, Mobile, InitialBalance, AdharNo, PanNo });
             await user.save();
-            const token=jwt.sign({userID:users.name},"masaiBank")
+            const token=jwt.sign({userName:users.name},"masaiBank")
             res.send({ "msg": "Registered Successfully","token":token })
         }
     // } catch (err) {
