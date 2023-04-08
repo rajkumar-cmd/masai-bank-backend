@@ -20,9 +20,16 @@ userRouter.post("/openAccount", async (req, res) => {
         res.send({ "msg": "Registered Successfully", "token": token , "details":users})
     }
 })
-userRouter.patch("/updateKYC",async(req,res)=>{
+userRouter.patch("/updateKYC/:id",async(req,res)=>{
     const payload=req.body;
-    res.send({"msg":payload});
+    const id=req.params.id;
+    const user=await userModel.find({"_id":id})
+    try{
+        await userModel.findByIdAndUpdate({"_id":id},payload)
+        res.send({"msg":"Update Successfull"});
+    }catch(err){
+        res.send({"msg":err})
+    }
 })
 
 module.exports = {
