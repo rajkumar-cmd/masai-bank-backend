@@ -15,7 +15,7 @@ userRouter.post("/openAccount", async (req, res) => {
     } else {
         const user = new userModel({ Name, Gender, DOB, Email, Mobile, InitialBalance, AdharNo, PanNo });
         await user.save();
-        const token = jwt.sign({ userName: user.name }, "masaiBank")
+        const token = jwt.sign({ userName: user.Name }, "masaiBank")
         res.send({ "msg": "Registered Successfully", "token": token , "details":user})
     }
 })
