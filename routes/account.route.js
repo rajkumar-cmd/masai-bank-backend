@@ -20,6 +20,10 @@ userRouter.post("/openAccount", async (req, res) => {
         res.send({ "msg": "Registered Successfully", "token": token , "details":users})
     }
 })
+userRouter.patch("/updateKYC",async(req,res)=>{
+    const payload=req.body;
+    console.log(payload);
+})
 
 module.exports = {
     userRouter
