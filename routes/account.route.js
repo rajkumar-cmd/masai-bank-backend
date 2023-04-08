@@ -26,7 +26,7 @@ userRouter.patch("/updateKYC/:id",async(req,res)=>{
     const user=await userModel.find({"_id":id})
     try{
         await userModel.findByIdAndUpdate({"_id":id},payload)
-        res.send({"msg":"Update Successfull","payload":payload,"id":id});
+        res.send({"msg":"Update Successfull","payload":payload,"id":id,"user":user});
     }catch(err){
         res.send({"msg":err})
     }
