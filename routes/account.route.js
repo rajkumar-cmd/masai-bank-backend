@@ -3,8 +3,9 @@ const { userModel } = require("../models/account.model");
 const jwt = require("jsonwebtoken")
 const userRouter = express.Router();
 
-userRouter.get("/", (req, res) => {
-    res.send("Home Page")
+userRouter.get("/", async(req, res) => {
+    const users=await userModel.find({});
+    res.send({"msg":users});
 })
 userRouter.post("/openAccount", async (req, res) => {
     const { Name, Gender, DOB, Email, Mobile, InitialBalance, AdharNo, PanNo } = req.body;
